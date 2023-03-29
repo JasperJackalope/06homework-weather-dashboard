@@ -8,6 +8,31 @@
     <title>Weather Dashboard</title>
   </head>
   <body>
+    <main>
+        <section id="currentWeather">
+            <h2 id="cityName"></h2>
+            <p id="date"></p>
+            <img id="weatherIcon" src="" alt="">
+            <p id="temperature"></p>
+            <p id="humidity"></p>
+            <p id="windSpeed"></p>
+        </section>
+        <section id="forecast">
+            <h2>5-Day Forecast</h2>
+            <div class="forecastDay">
+                <p class="date"></p>
+                <img class="weatherIcon" src="" alt="">
+                <p class="temperature"></p>
+                <p class="humidity"></p>
+                <p class="windSpeed"></p>
+            </div>
+            <!-- Repeat for 4 more days -->
+        </section>
+        <section id="searchHistory">
+            <h2>Search History</h2>
+            <ul id="searchList"></ul>
+        </section>
+    </main>    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./script.js"></script>
   </body>
