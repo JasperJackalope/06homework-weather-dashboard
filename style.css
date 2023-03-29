@@ -1,84 +1,24 @@
-* {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    background-color: antiquewhite;
+body {
+    font-family: 'Rubik', sans-serif;;
+    background-color:#E93CAC;
 }
 
-body {
-    font-size: 16px;
-    line-height: 1.5;
-    margin: 0;
-  }
-  
-  h2 {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  p {
-    margin: 0;
-  }
-  
-  img {
-    display: block;
-    width: 100%;
-    max-width: 100px;
-    height: auto;
-  }
-  
-  /* Layout Styles */
-  
-  main {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  section {
-    flex-basis: 100%;
-    margin-bottom: 20px;
-  }
-  
-  #currentWeather {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  #currentWeather img {
-    margin: 0 10px;
-  }
-  
-  #forecast {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
-  .forecastDay {
-    flex-basis: calc(20% - 10px);
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
+header {
     text-align: center;
-  }
-  
-  #searchHistory ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  #searchHistory li {
-    margin-bottom: 5px;
-    cursor: pointer;
-    color: blue;
-    text-decoration: underline;
-  }
-  
-  #searchHistory li:hover {
-    text-decoration: none;
+    background-color: blueviolet;
+    color: aqua;
+    padding: 15px;
+}
+
+.container {
+    margin: 15px;
+}
+
+img {
+    width:fit-content;
+}
+
+.bordered {
+    border: 1px solid black;
   }
   

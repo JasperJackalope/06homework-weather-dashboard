@@ -3,10 +3,6 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appi
   .then(data => {
     // Access the weather data from the JSON response here
     console.log(data);
-  })
-  .catch(error => {
-    // Handle any errors here
-    console.error(error);
   });
 
 
