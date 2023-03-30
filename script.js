@@ -1,8 +1,9 @@
 fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=34.05&lon=-118.24&appid=b4148f60988f2ad1e2369a15677ad5b8`)
   .then(response => response.json())
   .then(data => {
-    console.log(data);
-    console.log('Los Angeles');
+    var temp = data.list[0].main.temp;
+    var tempCelsius = ((temp - 273.15)*1.8+32).toFixed(2);
+    console.log(`Current temperature in Los Angeles: ${tempCelsius} °F`);
   });
 
 fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=44.08&lon=-103.23&appid=b4148f60988f2ad1e2369a15677ad5b8`)
