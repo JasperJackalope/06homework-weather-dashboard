@@ -10,11 +10,17 @@ N/A
 
 ## Usage
 
-The user will be presented with a webpage displaying the current date at the top of the screen along with entry row for each hour between 9 am and 6 pm. Each row is color coded to be a past hour (gray), present hour (red), and a future hour (green). In the screenshot below, the example is set to 2 pm to indicate the color scheme.
+The user will be presented with a webpage of the title "Weather Dashboard" and a "City Search" box. 
 
-To add an entry, simply click in the row for the desired hour, add the text, and click the blue save button at the far right of the row. The entry is now saved and upon refreshing the website, the entry will remain. To delete the entry, click in the row, deleted the desired text, and click save again. 
+![alt text](./images/dashboard2.jpg)
 
-![alt text](./Assets/scheduler-screenshot.jpg)
+ After entering a city and clicking the icon, the user will be presented with the current weather on top and the forecast for the next five days on the bottom. Additonally, the city will be added to the previous search list located beneath the search box.
+
+![alt text](./images/dashboard1.jpg)
+
+The user can also click on any of the previous searches to search again.
+
+![alt text](./images/dashboard3.jpg)
 
 ## Credits
 
