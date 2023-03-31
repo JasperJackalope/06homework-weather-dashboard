@@ -1,13 +1,13 @@
 var btn = document.querySelector("#btn-search");
-var containerHistoricCities = document.querySelector("#historic-Cities");
-var containerCurrent = document.querySelector("#targetCity");
-var containerForecast = document.querySelector("#infoCity");
+var containerSearchHistory = document.querySelector("#search-history");
+var containerCurrentWeather = document.querySelector("#inputCity");
+var containerFiveDayForecast = document.querySelector("#forecastCity");
 var dataStore = JSON.parse(localStorage.getItem('cities')) || [];
-var urlIcon;
+var openWeatherIcon;
     if (location.protocol === 'http:') {
-        urlIcon = 'http://openweathermap.org/img/wn/';
+        openWeatherIcon = 'http://openweathermap.org/img/wn/';
      } else {
-        urlIcon = 'https://openweathermap.org/img/wn/';
+        openWeatherIcon = 'https://openweathermap.org/img/wn/';
      }
 var weatherCondition = [];
 
@@ -16,7 +16,7 @@ function start() {
 }
 
 var loadCity = function(){
-    cleaningElement(containerHistoricCities);
+    blankElement(containerSearchHistory);
 
         if(dataStore){
             var ulElement = document.createElement("ul");
@@ -29,7 +29,7 @@ var loadCity = function(){
                 ulElement.appendChild(liElement);
                 }
 
-                containerHistoricCities.appendChild(ulElement); 
+                containerSearchHistory.appendChild(ulElement); 
             }
 };
 
@@ -41,7 +41,7 @@ $(document).on("click", ".list-group-item", function(event) {
     callApiFetch(city);
 });
 
-var cleaningElement = function(element){
+var blankElement = function(element){
     element.innerHTML = "";
 };
 
@@ -54,83 +54,78 @@ var convertWSpeed = function(speed){
 };
 
 var weatherHTML = function (city) {
-    cleaningElement(containerCurrent);
-    cleaningElement(containerForecast); 
-    var ctn1 = document.createElement("div");                         
-    ctn1.classList.add("col-6");                                      
-    var ctn2 = document.createElement("div");                   
-    ctn2.classList.add("col-6");                                     
+    blankElement(containerCurrentWeather);
+    blankElement(containerFiveDayForecast); 
+    var container1 = document.createElement("div");                         
+    container1.classList.add("col-6");                                      
+    var container2 = document.createElement("div");                   
+    container2.classList.add("col-6");                                     
     var cityEl = document.createElement("h2");
     var imageCurrent = document.createElement("img");
     cityEl.textContent = city + " (" + weatherCondition[0].dateT +")";
     imageCurrent.setAttribute("src", weatherCondition[0].icon);                       
     imageCurrent.classList.add("bg-info");                          
-    ctn1.appendChild(cityEl);
-    ctn2.appendChild(imageCurrent);
-    var ctn3  = document.createElement("div");                        
-    ctn3.classList.add("col-12");                      
-    ctn3.innerHTML =    "<p>Temperature: " + weatherCondition[0].temp + " °F / " + converTemp(weatherCondition[0].temp) + " °C</p>" + 
+    container1.appendChild(cityEl);
+    container2.appendChild(imageCurrent);
+    var container3  = document.createElement("div");                        
+    container3.classList.add("col-12");                      
+    container3.innerHTML =    "<p>Temperature: " + weatherCondition[0].temp + " °F " + 
                         "<p>Humidity: " + weatherCondition[0].humidity + "% </p>" +
                         "<p>Wind Speed: " + weatherCondition[0].speed + " MPH";
-    containerCurrent.appendChild(ctn1);
-    containerCurrent.appendChild(ctn2);
-    containerCurrent.appendChild(ctn3);
-    var ctn6 = document.createElement("div");        
-    ctn6.classList.add("row");                      
-    var ctn7 = document.createElement("div");         
-    ctn7.classList.add("col-12");                     
-    ctn7.innerHTML = "<h2>5-Day Forecast</h2>";
-    ctn6.appendChild(ctn7);
-    containerForecast.appendChild(ctn6);
-    var ctn8 = document.createElement("div");         
-    ctn8.classList.add("d-flex");                     
+    containerCurrentWeather.appendChild(container1);
+    containerCurrentWeather.appendChild(container2);
+    containerCurrentWeather.appendChild(container3);
+    var container6 = document.createElement("div");        
+    container6.classList.add("row");                      
+    var container7 = document.createElement("div");         
+    container7.classList.add("col-12");                     
+    container7.innerHTML = "<h2>5-Day Forecast</h2>";
+    container6.appendChild(container7);
+    containerFiveDayForecast.appendChild(container6);
+    var container8 = document.createElement("div");         
+    container8.classList.add("d-flex");                     
 
     for(var i=1; i<weatherCondition.length; i++){    
-        var ctn4  = document.createElement("div");                       
-        ctn4.classList.add("card");                                  
-        ctn4.classList.add("text-black");                            
-        ctn4.classList.add("mr-2");                    
-        ctn4.classList.add("flex-fill")
-        var ctn5  = document.createElement("div");
-        ctn5.classList.add("card-body");
+        var container4  = document.createElement("div");                       
+        container4.classList.add("card");                                  
+        container4.classList.add("text-black");                            
+        container4.classList.add("mr-2");                    
+        container4.classList.add("flex-fill")
+        var container5  = document.createElement("div");
+        container5.classList.add("card-body");
         var title = document.createElement("h6");
         title.classList.add("card-title");
         var imageForecast = document.createElement("img");
         title.textContent = weatherCondition[i].dateT;
         imageForecast.setAttribute("src", weatherCondition[i].icon);
-        var pEl1 = document.createElement("p");
-        var pEl2 = document.createElement("p");
-        pEl1.classList.add("small");
-        pEl1.textContent =   "Temperature: " + weatherCondition[i].temp + " °F";
-        pEl2.classList.add("small");
-        pEl2.textContent =  "Humidity: " + weatherCondition[i].humidity + "%";
-        ctn5.appendChild(title);
-        ctn5.appendChild(imageForecast);
-        ctn5.appendChild(pEl1);
-        ctn5.appendChild(pEl2)
-        ctn4.appendChild(ctn5);        
-        ctn8.appendChild(ctn4);
+        var pEL1 = document.createElement("p");
+        var pEL2 = document.createElement("p");
+        var pEL3 = document.createElement("p");
+        pEL1.classList.add("small");
+        pEL1.textContent =   "Temperature: " + weatherCondition[i].temp + " °F";
+        pEL2.classList.add("small");
+        pEL2.textContent =  "Humidity: " + weatherCondition[i].humidity + "%";
+        pEL3.classList.add("small");
+        pEL3.textContent =  "Wind Speed: " + weatherCondition[i].speed + " MPH";
+        container5.appendChild(title);
+        container5.appendChild(imageForecast);
+        container5.appendChild(pEL1);
+        container5.appendChild(pEL2);
+        container5.appendChild(pEL3);
+        container4.appendChild(container5);        
+        container8.appendChild(container4);
     }
-    containerForecast.appendChild(ctn8);
+    containerFiveDayForecast.appendChild(container8);
 };
 
 var saveCity = function(city){
-    var flag = false
-    if(dataStore){
-        for(var i = 0; i < dataStore.length; i++){
-            if(dataStore[i] === city){
-                flag = true;
-            }
-        }
-        if(flag){
-            displayAlertMessage("The City: "+city+" already exists")
-        }
-    }
-    if(!flag){
-        dataStore.push(city);
-        localStorage.setItem("cities",JSON.stringify(dataStore));
-    }
-    loadCity();
+  var exists = dataStore && dataStore.includes(city);
+  if(exists){
+  } else {
+      dataStore.push(city);
+      localStorage.setItem("cities",JSON.stringify(dataStore));
+      loadCity();
+  }
 }
 
 var searchForDate9AM = function (str) {
@@ -145,9 +140,10 @@ var searchForDate9AM = function (str) {
 }
 
 var formatDate = function(strDate){
-    var newDate = strDate.split(" ")[0].split("-");
-    return (newDate[1]+"/"+newDate[2]+"/"+newDate[0]);
+  var newDate = strDate.split(" ")[0].split("-");
+  return (newDate[1] + "/" + newDate[2] + "/" + newDate[0]);
 };
+
 
 var createDataObject = function(list, position){
     if(weatherCondition.length)
@@ -157,7 +153,7 @@ var createDataObject = function(list, position){
         humidity : list[0].main.humidity,
         speed: list[0].wind.speed,
         temp: list[0].main.temp,
-        icon : urlIcon + list[0].weather[0].icon + ".png",
+        icon : openWeatherIcon + list[0].weather[0].icon + ".png",
         lat : position.lat,
         lon: position.lon
     };
@@ -169,7 +165,7 @@ var createDataObject = function(list, position){
                 humidity : list[i].main.humidity,
                 speed: list[i].wind.speed,
                 temp: list[i].main.temp,
-                icon : urlIcon + list[i].weather[0].icon + ".png",
+                icon : openWeatherIcon + list[i].weather[0].icon + ".png",
                 lat : position.lat,
                 lon: position.lon
             };

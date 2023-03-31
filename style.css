@@ -37,6 +37,10 @@ h3 {
     padding: 25px;
 }
 
-#targetCity {
+#inputCity {
+    background-color: aqua;
+}
+
+.card {
     background-color: aqua;
 }
