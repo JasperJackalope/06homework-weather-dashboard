@@ -21,3 +21,22 @@ img {
 .bordered {
     border: 1px solid black;
   }
+
+.btn {
+    background-color: rgba(138, 43, 226, 0.5);
+}
+
+#sidebar {
+    background-color: aqua;
+    height: 100vh;
+  overflow-y: auto;
+}
+
+h3 {
+    color:blueviolet;
+    padding: 25px;
+}
+
+#targetCity {
+    background-color: aqua;
+}
